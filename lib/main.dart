@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-import './transaction.dart';
+
+import './widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,20 +18,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.54,
-      date: DateTime.now(),
-    ),
-  ];
+  // late String titleInput;
+  // late String amountInput;
+
+  final titleControler = TextEditingController();
+  final amountControler = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +31,7 @@ class MyHomePage extends StatelessWidget {
           title: Text('Flutter App'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -50,13 +42,7 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
-            Column(
-              children: transactions.map((tx) {
-                return Card(
-                  child: Text(tx.title),
-                );
-              }).toList(),
-            ),
+            UserTransaction()
           ],
         ));
   }
